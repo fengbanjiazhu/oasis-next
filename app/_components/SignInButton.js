@@ -1,4 +1,4 @@
-import { signInAction } from "./actions";
+import { signInAction } from "@/app/_lib/actions";
 
 function SignInButton() {
   return (
