@@ -11,6 +11,8 @@ export default async function Reservation({ cabin }) {
     getBookedDatesByCabinId(cabin.id),
   ]);
 
+  // console.log(bookedDates);
+
   const session = await auth();
 
   return (

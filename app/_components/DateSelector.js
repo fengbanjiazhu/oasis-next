@@ -4,6 +4,8 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useReservation } from "./ReservationContext";
 
+export const revalidate = 1;
+
 function isAlreadyBooked(range, datesArr) {
   return (
     range.from &&
