@@ -61,6 +61,8 @@ export async function createReservation(bookingData, formData) {
   if (error) {
     throw new Error("Booking could not be created");
   }
+
+  revalidatePath(`/cabins/${newBooking.cabinId}`);
 }
 
 export async function deleteReservation(id) {
@@ -80,6 +82,7 @@ export async function deleteReservation(id) {
   }
 
   revalidatePath("/account/reservations");
+  revalidatePath(`/cabins/${id}`);
 }
 
 export async function updateBooking(formData) {
