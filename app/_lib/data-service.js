@@ -97,9 +97,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     console.error(error);
     throw new Error("Bookings could not get loaded");
   }
-  console.log(data);
 
-  // Converting to actual dates to be displayed in the date picker
   const bookedDates = data
     .map((booking) => {
       return eachDayOfInterval({
@@ -120,8 +118,6 @@ export async function getSettings() {
     throw new Error("Settings could not be loaded");
   }
 
-  // await new Promise((res) => setTimeout(res, 5000));
-
   return data;
 }
 
@@ -135,9 +131,6 @@ export async function getCountries() {
   }
 }
 
-/////////////
-// CREATE
-
 export async function createGuest(newGuest) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
@@ -148,56 +141,3 @@ export async function createGuest(newGuest) {
 
   return data;
 }
-
-// export async function createBooking(newBooking) {
-//   const { data, error } = await supabase
-//     .from("bookings")
-//     .insert([newBooking])
-//     // So that the newly created object gets returned!
-//     .select()
-//     .single();
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Booking could not be created");
-//   }
-
-//   return data;
-// }
-
-/////////////
-// UPDATE
-
-/*
-// The updatedFields is an object which should ONLY contain the updated data
-export async function updateGuest(id, updatedFields) {
-  const { data, error } = await supabase
-    .from("guests")
-    .update(updatedFields)
-    .eq("id", id)
-    .select()
-    .single();
-
-  if (error) {
-    console.error(error);
-    throw new Error("Guest could not be updated");
-  }
-  return data;
-}
-
-*/
-
-// export async function updateBooking(id, updatedFields) {
-//   const { data, error } = await supabase
-//     .from("bookings")
-//     .update(updatedFields)
-//     .eq("id", id)
-//     .select()
-//     .single();
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Booking could not be updated");
-//   }
-//   return data;
-// }
